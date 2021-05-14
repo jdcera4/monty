@@ -6,7 +6,7 @@ glo_t glo;
  * @head: the head pointer to the list
  * Return: a token that holds the correct command
  */
-char *parse_line(unsigned int c, stack_t *head)
+char *token(unsigned int c, stack_t *head)
 {
 	char *token = NULL, *next_token = NULL;
 	int i = 0;

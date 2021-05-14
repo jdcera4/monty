@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	{
 		glo.bigb = NULL;
 		counter++;
-		glo.bigb = parse_line(counter, head);
+		glo.bigb = token(counter, head);
 		if (glo.bigb == NULL)
 		{
 			read = getline(&glo.line_buff, &buff, glo.fp);
