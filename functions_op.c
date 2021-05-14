@@ -114,12 +114,12 @@ void op_pop(stack_t **stack, unsigned int line_number)
 void op_add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
-	stack_t *second_node;
+	stack_t *new_node;
 
 	if (!current || !current->next)
 		add_error(line_number);
 
-	second_node = current->next;
-	second_node->n = second_node->n + current->n;
+	new_node = current->next;
+	new_node->n = new_node->n + current->n;
 	op_pop(stack, line_number);
 }
