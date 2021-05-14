@@ -45,72 +45,72 @@ void op_swap(stack_t **stack, unsigned int l)
  * Return: nothing
  */
 
-void op_nop(stack_t **stack, unsigned int line_number)
+void op_nop(stack_t **stack, unsigned int number)
 {
 	(void)stack;
-	(void)line_number;
+	(void)number;
 }
 
 /**
  * op_sub - subtracts the first two nodes together
  * @stack: a pointer to the head of a linked list
- * @line_number: the line number
+ * @number: the line number
  * Return: nothing
  */
 
-void op_sub(stack_t **stack, unsigned int line_number)
+void op_sub(stack_t **stack, unsigned int number)
 {
 	stack_t *current = *stack;
-	stack_t *second_node;
+	stack_t *new_node;
 
 	if (!current || !current->next)
-		sub_error(line_number);
+		sub_error(number);
 
-	second_node = current->next;
-	second_node->n = second_node->n - current->n;
-	op_pop(stack, line_number);
+	new_node = current->next;
+	new_node->n = new_node->n - current->n;
+	op_pop(stack, number);
 }
 
 /**
  * op_div - divides the first two nodes together
  * @stack: a pointer to the head of a linked list
- * @line_number: the line number
+ * @number: the line number
  * Return: nothing
  */
 
-void op_div(stack_t **stack, unsigned int line_number)
+void op_div(stack_t **stack, unsigned int number)
 {
 	stack_t *current = *stack;
-	stack_t *second_node;
+	stack_t *new_node;
 
 	if (!current || !current->next)
-		div_error(line_number);
+		div_error(number);
 
 	if (current->n == 0)
 	{
-		dprintf(STDERR_FILENO, "L%u: division by zero\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: division by zero\n", number);
 		exit(EXIT_FAILURE);
 	}
-	second_node = current->next;
-	second_node->n = second_node->n / current->n;
-	op_pop(stack, line_number);
+	new_node= current->next;
+	new_node->n = new_node->n / current->n;
+	op_pop(stack, number);
 }
 
 /**
  * op_mul - multiplies the first two nodes together
  * @stack: a pointer to the head of a linked list
- * @line_number: the line number
+ * @number: the line number
  * Return: nothing
  */
-void op_mul(stack_t **stack, unsigned int line_number)
+void op_mul(stack_t **stack, unsigned int number)
 {
 	stack_t *current = *stack;
 	stack_t *second_node;
 
 	if (!current || !current->next)
-		mul_error(line_number);
+		mul_error(number);
 
 	second_node = current->next;
 	second_node->n = second_node->n * current->n;
-	op_pop(stack, line_number);
+	op_pop(stack, number);
 }
