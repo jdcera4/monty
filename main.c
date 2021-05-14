@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 	stack_t *head = NULL;
 	ssize_t read;
 	int check;
-	size_t buff_size = 0;
+	size_t buff = 0;
 	unsigned int counter = 0;
 
 	glo.line_buff = NULL;
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	glo.fp = fopen(argv[1], "r");
 	open_check(argv);
 
-	read = getline(&glo.line_buff, &buff_size, glo.fp);
+	read = getline(&glo.line_buff, &buff, glo.fp);
 	line_check(read);
 
 	while (read >= 0)
@@ -33,12 +33,12 @@ int main(int argc, char **argv)
 		glo.bigb = parse_line(counter, head);
 		if (glo.bigb == NULL)
 		{
-			read = getline(&glo.line_buff, &buff_size, glo.fp);
+			read = getline(&glo.line_buff, &buff, glo.fp);
 			continue;
 		}
 		check = get_opcode(&head, counter);
 		op_check(check, counter, head);
-		read = getline(&glo.line_buff, &buff_size, glo.fp);
+		read = getline(&glo.line_buff, &buff, glo.fp);
 	}
 	free_buff();
 	free_stack(head);
