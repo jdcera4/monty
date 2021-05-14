@@ -10,7 +10,7 @@ glo_t glo;
 int main(int argc, char **argv)
 {
 	stack_t *head = NULL;
-	ssize_t readed;
+	ssize_t lines;
 	int check;
 	size_t buff_size = 0;
 	unsigned int counter = 0;
@@ -23,10 +23,10 @@ int main(int argc, char **argv)
 	glo.fp = fopen(argv[1], "r");
 	open_check(argv);
 
-	readed = getline(&glo.line_buff, &buff_size, glo.fp);
-	line_check(readed);
+	lines = getline(&glo.line_buff, &buff_size, glo.fp);
+	line_check(lines);
 
-	while (readed >= 0)
+	while (lines >= 0)
 	{
 		glo.bigb = NULL;
 		counter++;
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		}
 		check = get_opcode(&head, counter);
 		op_check(check, counter, head);
-		readed = getline(&glo.line_buff, &buff_size, glo.fp);
+		lines = getline(&glo.line_buff, &buff_size, glo.fp);
 	}
 	free_buff();
 	free_stack(head);
