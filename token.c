@@ -1,7 +1,7 @@
 #include "monty.h"
 glo_t glo;
 /**
- * parse_line - tokenizes the line
+ * token - tokenizes the line
  * @c: line number
  * @head: the head pointer to the list
  * Return: a token that holds the correct command
